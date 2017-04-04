@@ -44,8 +44,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        if ($exception instanceof ModelNotFoundException ||
+            $exception instanceof NotFoundHttpException) {
+            return response()->json([],404);
+
+        }
+
         return parent::render($request, $exception);
     }
+
+
 
     /**
      * Convert an authentication exception into an unauthenticated response.
