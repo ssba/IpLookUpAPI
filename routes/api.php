@@ -13,6 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('ip/check',['uses'=>'IpController@Check','as'=>'ip']);
