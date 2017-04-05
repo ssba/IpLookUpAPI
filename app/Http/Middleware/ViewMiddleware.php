@@ -16,6 +16,11 @@ class ViewMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        $response = $next($request);
+        $statusCode = $response->getStatusCode(); 
+        $text = $response->body;
+        $codeMessage = Response::$statusTexts[$statusCode]; 
+        return Response::json(array('code' => '$statusCode', 'message' => '$codeMessage', 'body' => '$text'));
+
     }
 }

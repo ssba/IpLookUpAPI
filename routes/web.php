@@ -15,3 +15,4 @@
 Route::get('/', function () {
         throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
     });
+
