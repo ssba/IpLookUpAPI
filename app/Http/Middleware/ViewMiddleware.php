@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Symfony\Component\HttpFoundation\Response; 
+use Illuminate\Support\Facades\Config
 
 class ViewMiddleware
 {
@@ -37,7 +38,7 @@ class ViewMiddleware
         if(Config::get('app.debug', false))
             $JsonOptions = JSON_NUMERIC_CHECK | JSON_BIGINT_AS_STRING | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
 
-        response()->json($body, $statusCode, [], $JsonOptions);
+        return response()->json($body, $statusCode, [], $JsonOptions);
 
 
     }
