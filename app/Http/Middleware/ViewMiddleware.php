@@ -40,6 +40,5 @@ class ViewMiddleware
 
         return response()->json($body, $statusCode, [], $JsonOptions);
 
-
     }
 }
