@@ -13,6 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('ip/check',['middleware' => ['view'],'uses'=>'IpController@Check','as'=>'ip']);
