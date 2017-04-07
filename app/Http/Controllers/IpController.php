@@ -7,15 +7,14 @@ use Illuminate\Http\Request;
    class IpController extends Controller { 
    	public function Check(Request $request){ 
    		$validator = Validator::make($request->all(),[ 
-   			'ip'->'ip' 
+   			'ip'=>'required|ip'  
    			]); 
-   	
+
    		if($validator->fails()){ 
    			throw new \Symfony\Component\HttpKernel\Exception\BadRequestExeption(); 
    		} 
 
-   		$ip = $request->ip; 
-   		$location = GeoIP::getLocation("$ip"); 
+   		$location = GeoIP::getLocation($request->ip); 
 
    		return $location; 
    	} 
