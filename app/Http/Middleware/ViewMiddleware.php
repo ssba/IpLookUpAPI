@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
 use Symfony\Component\HttpFoundation\Response; 
-use Illuminate\Support\Facades\Config
+use Illuminate\Support\Facades\Config;
 
 class ViewMiddleware
 {
@@ -28,17 +27,27 @@ class ViewMiddleware
         $response = $next($request);
         $statusCode = $response->getStatusCode();
 
+
         $body = [
             "code" =>$statusCode,
             "message" => Response::$statusTexts[$statusCode],
-            "body" => $response->body
+            "body" => $response->original
         ];
 
-        $JsonOptions = 0;
-        if(Config::get('app.debug', false))
-            $JsonOptions = JSON_NUMERIC_CHECK | JSON_BIGINT_AS_STRING | JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES;
+        
+        if(Config::get('app.debug', false)){
+            
 
-        return response()->json($body, $statusCode, [], $JsonOptions);
+            //return view("debug",["json"=>$body]);
+            return response()->view("debug",["json"=>$body]);
+        }
+        else{
+            return response()->json($body, $statusCode);
+        }
+
+       
+
 
     }
 }
+
