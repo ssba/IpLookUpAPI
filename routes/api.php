@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('ip/check',['middleware' => ['view'],'uses'=>'IpController@Check','as'=>'ip']);
+Route::get('ip/check',['middleware' => ['view'],'uses'=>'IpController@check','as'=>'ip']);
