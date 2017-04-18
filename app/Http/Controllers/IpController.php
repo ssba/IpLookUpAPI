@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Exceptions\Handler;
 use Validator;
-use GeoIP;
+use Torann\GeoIP\GeoIP;
 
 class IpController extends Controller
 {
