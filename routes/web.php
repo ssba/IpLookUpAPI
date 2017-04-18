@@ -11,6 +11,8 @@
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
-});
+        throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+    });
+

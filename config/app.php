@@ -176,7 +176,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        Barryvdh\Debugbar\ServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
+        App\Providers\DNSBLLookUpServiceProvider::class,
     ],
 
     /*
@@ -225,6 +227,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
+        'DNSBLLookUp' => App\Helper\DNSBLLookUpFacade::class,
 
     ],
 
