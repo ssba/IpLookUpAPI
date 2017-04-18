@@ -23,6 +23,6 @@ class IpController extends Controller
 
         $location = GeoIP::getLocation($request->ip);
 
-        return $location;
+        return DNSBLLookUpFacade::Check($location);
     }
 }
