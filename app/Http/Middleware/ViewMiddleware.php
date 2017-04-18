@@ -28,8 +28,12 @@ class ViewMiddleware
         $statusCode = $response->getStatusCode();
 
         $_body = $response->original;
-        if(!is_null($response->exception))
-            $_body = $response->exception->validator;
+        if(!is_null($response->exception)){
+            if(!empty($response->exception->validator))
+                $_body = $response->exception->validator;
+            else
+                $_body = null;
+        }
 
         $body = [
             "code" =>$statusCode,
