@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DNSBLLookUp;
 use Illuminate\Http\Request;
-use App\Exceptions\Handler;
+use App\Helper\DNSBLLookUpFacade;
 use Illuminate\Support\Facades\Validator;
 use Torann\GeoIP\GeoIP;
 use Illuminate\Validation\ValidationException;
