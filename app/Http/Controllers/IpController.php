@@ -27,20 +27,8 @@ class IpController extends Controller
         $result = (string) DNSBLLookUpFacade::Check($location);
 
         return response()->json([
-            "ip" => $location->ip,
-            "iso_code" => $location->iso_code,
-            "country" => $location->country,
-            "city" => $location->city,
-            "state" => $location->state,
-            "state_name" => $location->state_name,
-            "postal_code" => $location->postal_code,
-            "lat" => $location->lat,
-            "lon" => $location->lon,
-            "timezone" => $location->timezone,
-            "continent" => $location->continent,
-            "currency" => $location->currency,
-            "default" => $location->default,
-            "cached" => $location->cached
+            "result" => DNSBLLookUpFacade::Check($location),
+            "location" => $location->toArray()
         ]);
     }
 }
