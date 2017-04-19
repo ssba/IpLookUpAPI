@@ -21,10 +21,7 @@ class IpController extends Controller
         if ($validator->fails()) {
             throw new ValidationException($validator->errors()->all());
         }
-
-
         $location = GeoIP::getLocation($request->ip);
-        $result = (string) DNSBLLookUpFacade::Check($location);
 
         return response()->json([
             "result" => DNSBLLookUpFacade::Check($location),
