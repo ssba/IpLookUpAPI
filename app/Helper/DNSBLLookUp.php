@@ -20,7 +20,7 @@ class DNSBLLookUp
 
     public function Check($ip = null){
 
-        $clearMsg = '"A" record was not found';
+        $clearMsg = "'A' record was not found";
         $listed = [];
         if (!filter_var($ip, FILTER_VALIDATE_IP))
             return $clearMsg;

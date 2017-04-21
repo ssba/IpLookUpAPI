@@ -6,8 +6,9 @@ use DNSBLLookUp;
 use Illuminate\Http\Request;
 use App\Helper\DNSBLLookUpFacade;
 use Illuminate\Support\Facades\Validator;
-use Torann\GeoIP\GeoIP;
+use GeoIP;
 use Illuminate\Validation\ValidationException;
+
 
 class IpController extends Controller
 {
@@ -20,9 +21,11 @@ class IpController extends Controller
         if ($validator->fails()) {
             throw new ValidationException($validator->errors()->all());
         }
-
         $location = GeoIP::getLocation($request->ip);
 
-        return $location;
+        return response()->json([
+            "result" => DNSBLLookUpFacade::Check($location),
+            "location" => $location->toArray()
+        ]);
     }
 }

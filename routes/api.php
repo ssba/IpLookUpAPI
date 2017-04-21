@@ -14,3 +14,9 @@ use Illuminate\Http\Request;
 */
 
 Route::get('ip/check',['middleware' => ['view'],'uses'=>'IpController@check','as'=>'ip']);
+
+Route::get('/ip',function(){
+    return Redirect::to('ip',array(
+        'ip'=>'46.118.159.230'
+    ));
+});
